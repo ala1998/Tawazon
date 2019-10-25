@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".MyFragment">
+
+   <!-- <pl.droidsonroids.gif.GifTextView
+        android:id="@+id/gifID"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background1"
+        />-->
+   <!-- <com.google.android.exoplayer2.ui.SimpleExoPlayerView
+        android:id="@+id/exo_view"
+        app:use_controller="false"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </com.google.android.exoplayer2.ui.SimpleExoPlayerView>-->
+    <VideoView
+        android:id="@+id/video"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"/>
+
+<FrameLayout
+    android:id="@+id/placeholder"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:visibility="invisible"
+    android:background="@drawable/background1">
+
+</FrameLayout>
+    <!-- <com.github.siyamed.shapeimageview.DiamondImageView
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         app:siBorderWidth="6dp"
+         app:siBorderColor="#FFFFFF"/>-->
+
+
+</RelativeLayout>

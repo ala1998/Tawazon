@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <group android:checkableBehavior="single">
+    <item
+        android:id="@+id/children"
+        android:enabled="true"
+        android:iconTint="@drawable/tint"
+        android:iconTintMode="multiply"
+        android:icon="@drawable/ic_children"
+        android:title="الأطفال"
+        app:showAsAction="ifRoom"
+        tools:targetApi="o" />
+    <item
+        android:id="@+id/soul"
+        android:iconTint="@drawable/tint"
+
+        android:enabled="true"
+        android:icon="@drawable/ic_soul"
+        android:title="روحي"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/meditation"
+        android:enabled="true"
+        android:icon="@drawable/ic_meditation"
+        android:iconTint="@drawable/tint"
+        android:title="تأملات"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/body"
+        android:enabled="true"
+        android:iconTint="@drawable/tint"
+        android:icon="@drawable/ic_body"
+        android:title="جسدي"
+        app:showAsAction="ifRoom" />
+    <item
+    android:id="@+id/main"
+    android:enabled="true"
+    android:icon="@drawable/ic_main"
+    android:title="الرئيسية"
+        android:iconTint="@drawable/tint"
+
+        app:showAsAction="ifRoom" />
+    </group>
+</menu>
