@@ -3,6 +3,7 @@ package com.example.tawazonanimations;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.ContextThemeWrapper;
 import androidx.appcompat.widget.Toolbar;
@@ -15,22 +16,30 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.ColorFilter;
 import android.graphics.PorterDuff;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.InsetDrawable;
 import android.graphics.drawable.VectorDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.ToggleButton;
 import android.widget.VideoView;
 
 import com.devs.vectorchildfinder.VectorChildFinder;
 import com.devs.vectorchildfinder.VectorDrawableCompat;
 import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.internal.NavigationMenuItemView;
 
 import java.util.Objects;
@@ -38,13 +47,20 @@ import java.util.Objects;
 import com.example.tawazonanimations.MyFragment;
 import com.google.android.material.tabs.TabLayout;
 
+import static com.example.tawazonanimations.MyFragment.video;
+import static maes.tech.intentanim.CustomIntent.customType;
+
 public class MainActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private CollectionAdapter adapter;
     private FrameLayout frameLayout;
     private DrawerLayout drawer;
     private boolean exist = false;
-
+//    private ToggleButton left;
+    private FloatingActionButton left,profile;
+    public static ImageView birdImageView;
+    AlertDialog alertDialog;
+    private  AlertDialog.Builder alertDialogBuilder;
     //public VideoView video;
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -55,10 +71,55 @@ public class MainActivity extends AppCompatActivity {
             Objects.requireNonNull(getActionBar()).hide();
         }
 */
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
+        birdImageView=findViewById(R.id.birdImg);
+        profile=findViewById(R.id.profileButton);
+        profile.setScaleType(ImageView.ScaleType.CENTER);
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                Intent intent=new Intent(MainActivity.this,ProfileActivity.class);
+                intent.putExtra("Position",video.getCurrentPosition());
+                startActivity(intent);
+                overridePendingTransition(R.anim.bottom_up, R.anim.activity);
+            }
+        });
+        left=findViewById(R.id.menuButton);
+        left.setScaleType(ImageView.ScaleType.CENTER);
+        left.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this,SoundActivity.class);
+                startActivity(intent);
+                customType(MainActivity.this, "fadein-to-fadeout");
 
-        viewPager = findViewById(R.id.pager);
+            }
+        });
+/*
+        LayoutInflater li = LayoutInflater.from(MainActivity.this);
+        View promptsView = li.inflate(R.layout.layout_dialog, null);
+                dialogLeft=promptsView.findViewById(R.id.menuButton2);
+        dialogLeft.setScaleType(ImageView.ScaleType.CENTER);
+
+        alertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
+
+        alertDialogBuilder.setView(promptsView);
+         alertDialog = alertDialogBuilder.create();
+
+        left.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        alertDialog.show();
+                                        alertDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+
+                                    }
+                                });
+
+*/
+                viewPager = findViewById(R.id.pager);
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -121,7 +182,6 @@ public class MainActivity extends AppCompatActivity {
         // navi.setItemIconTintList(null);
         navi.setItemIconTintList(myList);
         // navi.setForegroundTintList(myList);
-
 
         navi.setSelectedItemId(R.id.main);
 
@@ -266,6 +326,11 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });*/
+    }
+
+    public void hideDialog(View view) {
+
+        //alertDialog.hide();
     }
 }
 

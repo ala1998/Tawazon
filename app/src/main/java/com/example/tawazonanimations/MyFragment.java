@@ -59,7 +59,7 @@ public class MyFragment extends Fragment {
     private boolean whenReady = true;
     private long exoPos = 0;
     private Uri uri;
-    private MediaController ctlr;
+//    private MediaController ctlr;
     public static VideoView video;
 
     //private MediaPlayer player;
@@ -112,10 +112,13 @@ public class MyFragment extends Fragment {
                 getString("Name"));
 
         video.setVideoURI(uri);
+
         video.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mp) {
-
+//                View placeholder = (View) view.findViewById(R.id.placeholder);
+//
+//                placeholder.setVisibility(View.GONE);
                 mp.setLooping(true);
                 // placeHolder.setVisibility(View.GONE);
                 DisplayMetrics metrics = new DisplayMetrics();
@@ -126,6 +129,7 @@ public class MyFragment extends Fragment {
                 params.leftMargin = 0;
                 video.setLayoutParams(params);
                 //mp.start();
+                //video.setZOrderOnTop(false);
                 video.start();
 
             }
