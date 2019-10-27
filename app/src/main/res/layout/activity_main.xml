@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-
+<!--<SurfaceView
+    android:layout_width="0px"
+    android:layout_height="0px" />-->
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#000000" />
+        android:background="@color/transparent" />
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -26,7 +30,6 @@
         app:backgroundTint="@android:color/darker_gray"
         android:src="@drawable/ic_menu"
         android:background="@color/white"
-        android:padding="0dp"
         tools:ignore="RtlHardcoded" />
 
     <LinearLayout
@@ -47,6 +50,7 @@
             android:background="@drawable/ic_bird" />
 
         <TextView
+            android:id="@+id/breath"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -127,8 +131,8 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_marginTop="40dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginEnd="25.5dp"
+        android:layout_marginRight="25.dp"
 app:backgroundTint="#B2a8a8a8"
     android:src="@drawable/ic_profile"
         tools:ignore="RtlHardcoded" />

@@ -73,9 +73,8 @@ public class MyFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         //  getActivity().getWindow().setFormat(PixelFormat.TRANSLUCENT);
-
-        getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+//        getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+//                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         final View view = inflater.inflate(R.layout.fragment_my, container, false);
         //     mExoView = view.findViewById(R.id.exo_view);
 //        final View placeHolder=(View)view.findViewById(R.id.placeholder);
@@ -121,13 +120,13 @@ public class MyFragment extends Fragment {
 //                placeholder.setVisibility(View.GONE);
                 mp.setLooping(true);
                 // placeHolder.setVisibility(View.GONE);
-                DisplayMetrics metrics = new DisplayMetrics();
+              /*  DisplayMetrics metrics = new DisplayMetrics();
                 getActivity().getWindowManager().getDefaultDisplay().getMetrics(metrics);
                 android.widget.RelativeLayout.LayoutParams params = (android.widget.RelativeLayout.LayoutParams) video.getLayoutParams();
                 params.width = metrics.widthPixels;
                 params.height = metrics.heightPixels;
                 params.leftMargin = 0;
-                video.setLayoutParams(params);
+                video.setLayoutParams(params);*/
                 //mp.start();
                 //video.setZOrderOnTop(false);
                 video.start();

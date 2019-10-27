@@ -27,7 +27,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"/>
-
+<!--
 <FrameLayout
     android:id="@+id/placeholder"
     android:layout_width="fill_parent"
@@ -35,7 +35,7 @@
     android:visibility="invisible"
     android:background="@drawable/background1">
 
-</FrameLayout>
+</FrameLayout>-->
     <!-- <com.github.siyamed.shapeimageview.DiamondImageView
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"

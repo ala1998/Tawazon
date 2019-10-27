@@ -32,6 +32,7 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.ToggleButton;
 import android.widget.VideoView;
 
@@ -59,6 +60,8 @@ public class MainActivity extends AppCompatActivity {
 //    private ToggleButton left;
     private FloatingActionButton left,profile;
     public static ImageView birdImageView;
+    public static BottomNavigationView navi;
+    public static TextView breath;
     AlertDialog alertDialog;
     private  AlertDialog.Builder alertDialogBuilder;
     //public VideoView video;
@@ -75,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
         birdImageView=findViewById(R.id.birdImg);
+        breath=findViewById(R.id.breath);
         profile=findViewById(R.id.profileButton);
         profile.setScaleType(ImageView.ScaleType.CENTER);
         profile.setOnClickListener(new View.OnClickListener() {
@@ -149,8 +153,7 @@ public class MainActivity extends AppCompatActivity {
         });*/
         adapter = new CollectionAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
-        final BottomNavigationView navi = findViewById(R.id.bottomnavigation);
-
+        navi = findViewById(R.id.bottomnavigation);
         //  navi.setSelectedItemId(R.id.main);
         // navi.findViewById(navi.getSelectedItemId()).setBackgroundColor(getResources().getColor(R.color.blue));
      /*   navi.setOnFocusChangeListener(new View.OnFocusChangeListener() {
