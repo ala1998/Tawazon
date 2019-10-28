@@ -31,6 +31,8 @@ import com.google.android.exoplayer2.trackselection.TrackSelector;
 import com.google.android.exoplayer2.ui.SimpleExoPlayerView;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
+import com.mklimek.frameviedoview.FrameVideoView;
+import com.mklimek.frameviedoview.FrameVideoViewListener;
 
 import java.io.File;
 
@@ -47,6 +49,8 @@ import java.io.IOException;
 
 import pl.droidsonroids.gif.GifDrawable;
 
+import static com.mklimek.frameviedoview.ImplType.VIDEO_VIEW;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -60,8 +64,8 @@ public class MyFragment extends Fragment {
     private long exoPos = 0;
     private Uri uri;
 //    private MediaController ctlr;
-    public static VideoView video;
-
+   // public static VideoView video;
+        public static FrameVideoView video;
     //private MediaPlayer player;
     public MyFragment() {
 
@@ -72,7 +76,7 @@ public class MyFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        //  getActivity().getWindow().setFormat(PixelFormat.TRANSLUCENT);
+   //       getActivity().getWindow().setFormat(PixelFormat.TRANSLUCENT);
 //        getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 //                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         final View view = inflater.inflate(R.layout.fragment_my, container, false);
@@ -105,14 +109,34 @@ public class MyFragment extends Fragment {
         uri = Uri.parse("android.resource://" + getActivity().getPackageName() + "/raw/" + getArguments().
                 getString("Name"));
 
-        video = (VideoView) view.findViewById(R.id.video);
 
-        Uri uri = Uri.parse("android.resource://" + getActivity().getPackageName() + "/raw/" + getArguments().
-                getString("Name"));
+        video = (FrameVideoView) view.findViewById(R.id.video);
+        video.setup(uri,Color.TRANSPARENT);
+        video.animate();
 
-        video.setVideoURI(uri);
 
-        video.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+        video.setFrameVideoViewListener(new FrameVideoViewListener() {
+            @Override
+            public void mediaPlayerPrepared(MediaPlayer mediaPlayer) {
+                mediaPlayer.start();
+                mediaPlayer.setLooping(true);
+            }
+
+            @Override
+            public void mediaPlayerPrepareFailed(MediaPlayer mediaPlayer, String error){
+
+            }
+        });
+
+
+        //   video = (VideoView) view.findViewById(R.id.video);
+
+//        Uri uri = Uri.parse("android.resource://" + getActivity().getPackageName() + "/raw/" + getArguments().
+//                getString("Name"));
+
+       // video.setVideoURI(uri);
+
+      /*  video.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mp) {
 //                View placeholder = (View) view.findViewById(R.id.placeholder);
@@ -120,19 +144,19 @@ public class MyFragment extends Fragment {
 //                placeholder.setVisibility(View.GONE);
                 mp.setLooping(true);
                 // placeHolder.setVisibility(View.GONE);
-              /*  DisplayMetrics metrics = new DisplayMetrics();
+              *//*  DisplayMetrics metrics = new DisplayMetrics();
                 getActivity().getWindowManager().getDefaultDisplay().getMetrics(metrics);
                 android.widget.RelativeLayout.LayoutParams params = (android.widget.RelativeLayout.LayoutParams) video.getLayoutParams();
                 params.width = metrics.widthPixels;
                 params.height = metrics.heightPixels;
                 params.leftMargin = 0;
-                video.setLayoutParams(params);*/
+                video.setLayoutParams(params);*//*
                 //mp.start();
                 //video.setZOrderOnTop(false);
                 video.start();
 
             }
-        });
+        });*/
 
         //   initialize(uri);
        /* gif.setBackgroundResource(  getResources().getIdentifier(getArguments().
@@ -169,6 +193,7 @@ public class MyFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        video.onResume();
         //initialize(uri);
     }
 
@@ -181,6 +206,7 @@ public class MyFragment extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
+        video.onPause();
         // if (Util.SDK_INT < 23)
         //   releasePlayer();
     }

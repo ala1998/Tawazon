@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".SoundActivity"
             android:theme="@style/Theme.AppCompat.Light.Dialog"></activity>
-        <activity android:name=".ProfileActivity" />
+        <activity android:name=".ProfileActivity"  />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

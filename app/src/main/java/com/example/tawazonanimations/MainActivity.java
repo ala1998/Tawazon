@@ -7,10 +7,12 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.ContextThemeWrapper;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
@@ -20,6 +22,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.InsetDrawable;
 import android.graphics.drawable.VectorDrawable;
+import android.media.AudioManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -73,9 +76,15 @@ public class MainActivity extends AppCompatActivity {
        /* if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             Objects.requireNonNull(getActionBar()).hide();
         }
-*/
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+//*/
+//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+//                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+//        ( (AudioManager)(getSystemService(Context.AUDIO_SERVICE))).setStreamMute(AudioManager.STREAM_MUSIC,false);
+
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        getWindow().setStatusBarColor(ContextCompat.getColor(this,R.color.black));
+// finally change the color
         getSupportActionBar().hide();
         birdImageView=findViewById(R.id.birdImg);
         breath=findViewById(R.id.breath);
@@ -86,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent intent=new Intent(MainActivity.this,ProfileActivity.class);
-                intent.putExtra("Position",video.getCurrentPosition());
+              //  intent.putExtra("Position",video.getCurrentPosition());
                 startActivity(intent);
                 overridePendingTransition(R.anim.bottom_up, R.anim.activity);
             }
@@ -98,7 +107,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent=new Intent(MainActivity.this,SoundActivity.class);
                 startActivity(intent);
-                customType(MainActivity.this, "fadein-to-fadeout");
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+
+
+//                customType(MainActivity.this, "fadein-to-fadeout");
 
             }
         });
@@ -142,7 +154,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         TabLayout tabLayout = findViewById(R.id.tabDots);
-        tabLayout.setupWithViewPager(viewPager);
+        tabLayout.setupWithViewPager(viewPager,true);
+        tabLayout.clearOnTabSelectedListeners();
+        for (View v : tabLayout.getTouchables()) {
+            v.setEnabled(false);
+        }
         frameLayout = findViewById(R.id.frameLayout);
        /* frameLayout.setOnClickListener(new View.OnClickListener() {
             @Override
