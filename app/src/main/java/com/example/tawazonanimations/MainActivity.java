@@ -23,6 +23,7 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.InsetDrawable;
 import android.graphics.drawable.VectorDrawable;
 import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -79,12 +80,19 @@ public class MainActivity extends AppCompatActivity {
 //*/
 //        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 //                WindowManager.LayoutParams.FLAG_FULLSCREEN);
-//        ( (AudioManager)(getSystemService(Context.AUDIO_SERVICE))).setStreamMute(AudioManager.STREAM_MUSIC,false);
+   ( (AudioManager)(getSystemService(Context.AUDIO_SERVICE))).setStreamMute(AudioManager.STREAM_MUSIC,false);
+//TODO: Put 3 videos without sound and create mediaplayer for whole app
+   /*
+        MediaPlayer mp = MediaPlayer.create(context, R.raw.sound_file_1);
+        mp.start();
 
+        mp.setVolume(0,0);
+
+        mp.setVolume(1,1);*/
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         getWindow().setStatusBarColor(ContextCompat.getColor(this,R.color.black));
-// finally change the color
+
         getSupportActionBar().hide();
         birdImageView=findViewById(R.id.birdImg);
         breath=findViewById(R.id.breath);
