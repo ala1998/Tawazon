@@ -67,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
     public static BottomNavigationView navi;
     public static TextView breath;
     AlertDialog alertDialog;
+    public static MediaPlayer mp;
     private  AlertDialog.Builder alertDialogBuilder;
     //public VideoView video;
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -74,6 +75,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+
        /* if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             Objects.requireNonNull(getActionBar()).hide();
         }
@@ -81,14 +85,9 @@ public class MainActivity extends AppCompatActivity {
 //        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 //                WindowManager.LayoutParams.FLAG_FULLSCREEN);
    ( (AudioManager)(getSystemService(Context.AUDIO_SERVICE))).setStreamMute(AudioManager.STREAM_MUSIC,false);
-//TODO: Put 3 videos without sound and create mediaplayer for whole app
-   /*
-        MediaPlayer mp = MediaPlayer.create(context, R.raw.sound_file_1);
+         mp = MediaPlayer.create(this, R.raw.waterfall);
         mp.start();
-
-        mp.setVolume(0,0);
-
-        mp.setVolume(1,1);*/
+        mp.setLooping(true);
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         getWindow().setStatusBarColor(ContextCompat.getColor(this,R.color.black));
@@ -115,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent=new Intent(MainActivity.this,SoundActivity.class);
                 startActivity(intent);
-                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+                overridePendingTransition(R.anim.fade_in, R.anim.activity);
 
 
 //                customType(MainActivity.this, "fadein-to-fadeout");
@@ -207,12 +206,43 @@ public class MainActivity extends AppCompatActivity {
         };
         ColorStateList myList = new ColorStateList(states, colors);
         // navi.setItemIconTintList(null);
-        navi.setItemIconTintList(myList);
+   //     navi.setItemIconTintList(myList);
         // navi.setForegroundTintList(myList);
 
+        navi.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+              navi.setItemIconTintList(null);
+                    int id=menuItem.getItemId();
+             if(id==R.id.children) {
+                 menuItem.setIcon(R.drawable.bottom_navigation_kids_click);
+                 return true;
+             }
+             else
+             if(id==R.id.soul) {
+                 menuItem.setIcon(R.drawable.bottom_navigation_soul_click);
+                 return true;
+             }
+             else   if(id==R.id.body) {
+                 menuItem.setIcon(R.drawable.bottom_navigation_body_click);
+                 return true;
+             }
+             else   if(id==R.id.meditation) {
+                 menuItem.setIcon(R.drawable.bottom_navigation_meditation_click);
+                 return true;
+             }
+             else   if(id==R.id.main) {
+                 menuItem.setIcon(R.drawable.bottom_navigation_home_click);
+                 return true;
+             }
+             else
+                 return false;
+
+            }
+        });
         navi.setSelectedItemId(R.id.main);
 
-/*        navi.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+        /*        navi.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
 
@@ -287,7 +317,7 @@ public class MainActivity extends AppCompatActivity {
                         //     navi.setItemIconTintList(new ColorStateList());
                         navi.findViewById(menuItem.getItemId()).setBackgroundColor(getResources().getColor(R.color.colorAccent));
 
-                        //TODO: Uncomment this line
+
                    //     menu.findItem(menuItem.getItemId()).setIcon(R.drawable.ic_ballons);
                     //    menu.findItem(menuItem.getItemId()).getIcon().setTint(getResources().getColor(R.color.colorAccent));
 
@@ -355,9 +385,9 @@ public class MainActivity extends AppCompatActivity {
         });*/
     }
 
-    public void hideDialog(View view) {
+   /* public void hideDialog(View view) {
 
         //alertDialog.hide();
-    }
+    }*/
 }
 

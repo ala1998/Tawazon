@@ -27,7 +27,7 @@
         android:layout_marginStart="25.5dp"
         android:layout_marginLeft="25.5dp"
         android:layout_marginTop="40dp"
-        app:backgroundTint="@android:color/darker_gray"
+        app:backgroundTint="#474444"
         android:src="@drawable/ic_menu"
         android:background="@color/white"
         tools:ignore="RtlHardcoded" />
@@ -56,6 +56,8 @@
             android:layout_marginTop="5dp"
             android:text="@string/breathe_and_start_again"
             android:textColor="@color/white"
+            android:fontFamily="@font/cairo"
+
             android:textSize="23dp" />
 
     </LinearLayout>
@@ -84,6 +86,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="@string/meditate_theـevening"
+                android:fontFamily="@font/cairo"
+
                 android:textColor="@color/white"
                 android:textSize="25dp" />
 
@@ -92,6 +96,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/hoping_for_the_intellectual"
                 android:textAlignment="center"
+                android:fontFamily="@font/cairo"
+
                 android:textColor="@color/white"
                 android:textSize="15sp" />
 
@@ -103,6 +109,7 @@
                 android:layout_marginTop="25dp"
                 android:text="@string/five_minute"
                 android:textAlignment="center"
+                android:fontFamily="@font/cairo"
                 android:textColor="@color/white"
                 android:textSize="15sp" />
         </LinearLayout>
@@ -141,7 +148,7 @@
         android:layout_marginTop="40dp"
         android:layout_marginEnd="25.5dp"
         android:layout_marginRight="25.dp"
-app:backgroundTint="#B2a8a8a8"
+app:backgroundTint="#474444"
     android:src="@drawable/ic_profile"
         tools:ignore="RtlHardcoded" />
 
@@ -153,6 +160,9 @@ app:backgroundTint="#B2a8a8a8"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:elevation="8dp"
+        app:itemIconSize="25dp"
+        android:textAlignment="center"
+        android:theme="@style/Theme.AppCompat.Light"
         app:itemIconTint="@color/white"
         app:itemTextColor="@color/white"
         app:labelVisibilityMode="labeled"

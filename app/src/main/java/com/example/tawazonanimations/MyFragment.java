@@ -64,8 +64,8 @@ public class MyFragment extends Fragment {
     private long exoPos = 0;
     private Uri uri;
 //    private MediaController ctlr;
-   // public static VideoView video;
-        public static FrameVideoView video;
+    public static VideoView video;
+//        public static FrameVideoView video;
     //private MediaPlayer player;
     public MyFragment() {
 
@@ -93,6 +93,7 @@ public class MyFragment extends Fragment {
             ctlr=new MediaController(getActivity().getBaseContext());
             ctlr.setMediaPlayer(video);
             video.setMediaController(ctlr);
+              video.setVolume(0,0);
             video.requestFocus();
        //     video.seekTo(0);
             video.start();
@@ -108,16 +109,43 @@ public class MyFragment extends Fragment {
      */
         uri = Uri.parse("android.resource://" + getActivity().getPackageName() + "/raw/" + getArguments().
                 getString("Name"));
+           video = (VideoView) view.findViewById(R.id.video);
+
+         video.setVideoURI(uri);
+
+       video.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mp) {
+//                View placeholder = (View) view.findViewById(R.id.placeholder);
+//
+//                placeholder.setVisibility(View.GONE);
+                mp.setVolume(0,0);
+                mp.setLooping(true);
+                // placeHolder.setVisibility(View.GONE);
+              /*  DisplayMetrics metrics = new DisplayMetrics();
+                getActivity().getWindowManager().getDefaultDisplay().getMetrics(metrics);
+                android.widget.RelativeLayout.LayoutParams params = (android.widget.RelativeLayout.LayoutParams) video.getLayoutParams();
+                params.width = metrics.widthPixels;
+                params.height = metrics.heightPixels;
+                params.leftMargin = 0;
+                video.setLayoutParams(params);*/
+                //mp.start();
+                //video.setZOrderOnTop(false);
+                video.start();
+
+            }
+        });
+
+//
+//        video.setup(uri,Color.TRANSPARENT);
+//
+//        video.animate();
 
 
-        video = (FrameVideoView) view.findViewById(R.id.video);
-        video.setup(uri,Color.TRANSPARENT);
-        video.animate();
-
-
-        video.setFrameVideoViewListener(new FrameVideoViewListener() {
+     /*   video.setFrameVideoViewListener(new FrameVideoViewListener() {
             @Override
             public void mediaPlayerPrepared(MediaPlayer mediaPlayer) {
+                mediaPlayer.setVolume(0,0);
                 mediaPlayer.start();
                 mediaPlayer.setLooping(true);
             }
@@ -127,36 +155,8 @@ public class MyFragment extends Fragment {
 
             }
         });
+*/
 
-
-        //   video = (VideoView) view.findViewById(R.id.video);
-
-//        Uri uri = Uri.parse("android.resource://" + getActivity().getPackageName() + "/raw/" + getArguments().
-//                getString("Name"));
-
-       // video.setVideoURI(uri);
-
-      /*  video.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-            @Override
-            public void onPrepared(MediaPlayer mp) {
-//                View placeholder = (View) view.findViewById(R.id.placeholder);
-//
-//                placeholder.setVisibility(View.GONE);
-                mp.setLooping(true);
-                // placeHolder.setVisibility(View.GONE);
-              *//*  DisplayMetrics metrics = new DisplayMetrics();
-                getActivity().getWindowManager().getDefaultDisplay().getMetrics(metrics);
-                android.widget.RelativeLayout.LayoutParams params = (android.widget.RelativeLayout.LayoutParams) video.getLayoutParams();
-                params.width = metrics.widthPixels;
-                params.height = metrics.heightPixels;
-                params.leftMargin = 0;
-                video.setLayoutParams(params);*//*
-                //mp.start();
-                //video.setZOrderOnTop(false);
-                video.start();
-
-            }
-        });*/
 
         //   initialize(uri);
        /* gif.setBackgroundResource(  getResources().getIdentifier(getArguments().
@@ -193,7 +193,7 @@ public class MyFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        video.onResume();
+//        video.onResume();
         //initialize(uri);
     }
 
@@ -206,7 +206,7 @@ public class MyFragment extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
-        video.onPause();
+//        video.onPause();
         // if (Util.SDK_INT < 23)
         //   releasePlayer();
     }

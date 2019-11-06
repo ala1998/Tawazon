@@ -19,25 +19,25 @@
         android:layout_height="match_parent">
 
     </com.google.android.exoplayer2.ui.SimpleExoPlayerView>-->
-
+<!--
     <com.mklimek.frameviedoview.FrameVideoView
         android:id="@+id/video"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        />
+        />-->
  <!--   <mateuszklimek.framevideoview.FrameVideoView
         android:id="@+id/video"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         />-->
-  <!--  <VideoView
+    <VideoView
         android:id="@+id/video"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"/>-->
+        android:layout_alignParentLeft="true"/>
 
 <!--
 <FrameLayout

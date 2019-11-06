@@ -9,7 +9,7 @@
         android:enabled="true"
         android:iconTint="@drawable/tint"
         android:iconTintMode="multiply"
-        android:icon="@drawable/ic_children"
+        android:icon="@drawable/ic_kids"
         android:title="الأطفال"
         app:showAsAction="ifRoom"
         tools:targetApi="o" />
@@ -38,7 +38,7 @@
     <item
     android:id="@+id/main"
     android:enabled="true"
-    android:icon="@drawable/ic_main"
+    android:icon="@drawable/ic_home"
     android:title="الرئيسية"
         android:iconTint="@drawable/tint"
 
