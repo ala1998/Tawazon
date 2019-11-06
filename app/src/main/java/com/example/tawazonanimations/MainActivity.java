@@ -76,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //TODO: Let user see square(rhomboid) while drawing
 
 
        /* if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
@@ -91,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         getWindow().setStatusBarColor(ContextCompat.getColor(this,R.color.black));
-
+        if(getSupportActionBar()!=null)
         getSupportActionBar().hide();
         birdImageView=findViewById(R.id.birdImg);
         breath=findViewById(R.id.breath);
